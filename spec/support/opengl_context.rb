@@ -2,10 +2,14 @@
 
 # Initialize an OpenGL context, which is required for shader compilation.
 RSpec.shared_context "with an OpenGL context" do
-  before do
+  before :all do
     initialize_opengl
     initialize_glfw
-    make_context
+    setup_context
+  end
+
+  after :all do
+    teardown_context
   end
 
   private
@@ -23,11 +27,16 @@ RSpec.shared_context "with an OpenGL context" do
     GLFW.WindowHint GLFW::GLFW_OPENGL_PROFILE, GLFW::GLFW_OPENGL_CORE_PROFILE
   end
 
-  def make_context
+  def setup_context
     GLFW.WindowHint GLFW::GLFW_VISIBLE, GLFW::GLFW_FALSE
 
     window = GLFW.CreateWindow 256, 256, "Test Context", nil, nil
 
     GLFW.MakeContextCurrent window
+  end
+
+  def teardown_context
+    GLFW.DestroyWindow GLFW.GetCurrentContext
+    GLFW.Terminate
   end
 end
