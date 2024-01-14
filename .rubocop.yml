@@ -7,6 +7,14 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.1
 
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  EnforcedStyle: omit_parentheses
+
+Style/MethodDefParentheses:
+  Enabled: true
+  EnforcedStyle: require_no_parentheses
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
@@ -14,6 +22,9 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
+Style/SuperWithArgsParentheses:
+  Enabled: false
 
 Layout/LineLength:
   Max: 120
