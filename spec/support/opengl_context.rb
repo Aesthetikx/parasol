@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "glfw"
-
 # Initialize an OpenGL context, which is required for shader compilation.
 RSpec.shared_context "with an OpenGL context" do
   before do

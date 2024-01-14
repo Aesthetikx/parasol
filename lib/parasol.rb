@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "opengl"
+require "glfw"
 
 require_relative "parasol/version"
 
