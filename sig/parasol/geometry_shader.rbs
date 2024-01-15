@@ -1,0 +1,5 @@
+module Parasol
+  class GeometryShader < Parasol::Shader
+    def initialize: (source: String) -> void
+  end
+end

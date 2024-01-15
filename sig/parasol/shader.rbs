@@ -1,0 +1,39 @@
+module Parasol
+  class Shader
+    include OpenGLContext
+
+    attr_reader source: String
+
+    attr_reader type: Integer
+
+    def initialize: (source: String, type: Integer) -> void
+
+    def handle: () -> Integer
+
+    def delete: () -> nil
+
+    def compiled?: () -> bool
+
+    private
+
+    LOG_SIZE: Integer
+
+    attr_reader the_shader: Integer?
+
+    def compile_the_shader!: () -> Integer
+
+    def create_shader!: () -> Integer
+
+    def compile_shader!: () -> Integer
+
+    def compiled_successfully?: () -> bool
+
+    def packed_source: () -> String
+
+    def compile_status: () -> Integer?
+
+    def last_error_message: () -> String
+
+    def cleanup: () -> nil
+  end
+end

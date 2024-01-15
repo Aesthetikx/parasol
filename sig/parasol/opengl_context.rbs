@@ -1,0 +1,6 @@
+module Parasol
+  # :nodoc:
+  module OpenGLContext
+    def require_opengl_context!: () -> nil
+  end
+end

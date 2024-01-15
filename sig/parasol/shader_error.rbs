@@ -1,0 +1,4 @@
+module Parasol
+  class ShaderError < Error
+  end
+end
