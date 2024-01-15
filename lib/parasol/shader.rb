@@ -30,7 +30,9 @@ module Parasol
     attr_reader :the_shader
 
     def compile_the_shader!
-      return if compiled?
+      if compiled?
+        return the_shader # : Integer
+      end
 
       require_opengl_context!
 
@@ -50,7 +52,9 @@ module Parasol
 
       GL.CompileShader the_shader
 
-      return the_shader if compiled_successfully?
+      if compiled_successfully?
+        return the_shader # : Integer
+      end
 
       message = last_error_message
 
@@ -74,7 +78,9 @@ module Parasol
 
       GL.GetShaderiv the_shader, GL::COMPILE_STATUS, status_buffer
 
-      status_buffer.unpack1 "L"
+      status = status_buffer.unpack1 "L"
+
+      status&.to_i
     end
 
     def last_error_message
