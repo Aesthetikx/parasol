@@ -1,0 +1,37 @@
+module Parasol
+  class Program
+    include OpenGLContext
+
+    attr_reader shaders: [Shader]
+
+    def initialize: (shaders: [Parasol::Shader]) -> void
+
+    def handle: () -> Integer
+
+    def delete: () -> nil
+
+    def linked?: () -> bool
+
+    private
+
+    LOG_SIZE: Integer
+
+    attr_reader the_program: Integer?
+
+    def create_the_program!: () -> Integer
+
+    def create_program!: () -> Integer
+
+    def link_program!: () -> Integer
+
+    def attach_shaders: () -> void
+
+    def link_status: () -> Integer?
+
+    def linked_successfully?: () -> bool
+
+    def last_error_message: () -> String
+
+    def cleanup: () -> nil
+  end
+end

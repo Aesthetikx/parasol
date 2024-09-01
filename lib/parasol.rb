@@ -11,6 +11,7 @@ module Parasol
 end
 
 require_relative "parasol/opengl_context"
+require_relative "parasol/program"
 require_relative "parasol/shader"
 require_relative "parasol/shader_error"
 require_relative "parasol/fragment_shader"
