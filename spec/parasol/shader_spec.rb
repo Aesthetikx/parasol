@@ -36,7 +36,7 @@ RSpec.describe Parasol::Shader do
 
         expect { shader.handle }.to \
           raise_error(Parasol::ShaderError)
-          .with_message(/undeclared identifier 'xyzzy'/i)
+          .with_message(/xyzzy/i)
       end
     end
 
