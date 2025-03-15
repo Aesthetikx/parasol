@@ -10,7 +10,7 @@ module Parasol
 
     def handle: () -> Integer
 
-    def delete: () -> nil
+    def delete: () -> void
 
     def compiled?: () -> bool
 
@@ -34,6 +34,6 @@ module Parasol
 
     def last_error_message: () -> String
 
-    def cleanup: () -> nil
+    def cleanup: () -> void
   end
 end
