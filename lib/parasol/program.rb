@@ -42,7 +42,7 @@ module Parasol
 
     def create_program!
       GL.CreateProgram.tap do |pointer|
-        fail Graphics::ShaderError, "Unable to create program" if pointer.zero?
+        fail Parasol::ShaderError, "Unable to create program" if pointer.zero?
       end
     end
 
@@ -57,7 +57,7 @@ module Parasol
 
       message = last_error_message
 
-      fail Graphics::ShaderError, "Unable to compile program:\n#{message}"
+      fail Parasol::ShaderError, "Unable to compile program:\n#{message}"
     rescue Parasol::ShaderError
       cleanup
 
