@@ -1,0 +1,34 @@
+module Fiddle
+  class Pointer
+    def null?: () -> bool
+  end
+end
+
+module GL
+  TRUE: Integer
+
+  COMPILE_STATUS: Integer
+  LINK_STATUS: Integer
+
+  FRAGMENT_SHADER: Integer
+  GEOMETRY_SHADER: Integer
+  VERTEX_SHADER: Integer
+
+  def self.AttachShader: (Integer, Integer) -> void
+  def self.CompileShader: (Integer) -> void
+  def self.CreateShader: (Integer) -> Integer
+  def self.DeleteShader: (Integer) -> void
+  def self.GetShaderInfoLog: (Integer, Integer, String, String) -> void
+  def self.GetShaderiv: (Integer, Integer, String) -> void
+  def self.ShaderSource: (Integer, Integer, String, String?) -> void
+
+  def self.CreateProgram: () -> Integer
+  def self.DeleteProgram: (Integer) -> void
+  def self.GetProgramInfoLog: (Integer, Integer, String, String) -> void
+  def self.GetProgramiv: (Integer, Integer, String) -> void
+  def self.LinkProgram: (Integer) -> void
+end
+
+module GLFW
+  def self.GetCurrentContext: () -> Fiddle::Pointer
+end
