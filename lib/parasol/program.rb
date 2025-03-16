@@ -24,8 +24,6 @@ module Parasol
 
     private
 
-    LOG_SIZE = 8192
-
     attr_reader :the_program
 
     def create_the_program!
@@ -93,10 +91,11 @@ module Parasol
     def last_error_message
       return unless the_program
 
+      log_size = 8192
       length_buffer = " " * 4
-      log_buffer = " " * LOG_SIZE
+      log_buffer = " " * log_size
 
-      GL.GetProgramInfoLog the_program, LOG_SIZE, length_buffer, log_buffer
+      GL.GetProgramInfoLog the_program, log_size, length_buffer, log_buffer
 
       log_buffer.strip
     end

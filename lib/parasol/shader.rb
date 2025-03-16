@@ -25,8 +25,6 @@ module Parasol
 
     private
 
-    LOG_SIZE = 8192
-
     attr_reader :the_shader
 
     def compile_the_shader!
@@ -90,10 +88,11 @@ module Parasol
     def last_error_message
       return unless the_shader
 
+      log_size = 8192
       length_buffer = " " * 4
-      log_buffer = " " * LOG_SIZE
+      log_buffer = " " * log_size
 
-      GL.GetShaderInfoLog the_shader, LOG_SIZE, length_buffer, log_buffer
+      GL.GetShaderInfoLog the_shader, log_size, length_buffer, log_buffer
 
       log_buffer.strip
     end
