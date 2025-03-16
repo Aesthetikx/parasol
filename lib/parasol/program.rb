@@ -47,6 +47,8 @@ module Parasol
     end
 
     def link_program!
+      fail Parasol::ShaderError, "Program has not been created" unless the_program
+
       attach_shaders
 
       GL.LinkProgram the_program
@@ -65,12 +67,16 @@ module Parasol
     end
 
     def attach_shaders
+      return unless the_program
+
       shaders.each do |shader|
         GL.AttachShader the_program, shader.handle
       end
     end
 
     def link_status
+      return unless the_program
+
       status_buffer = " " * 4
 
       GL.GetProgramiv the_program, GL::LINK_STATUS, status_buffer
@@ -85,6 +91,8 @@ module Parasol
     end
 
     def last_error_message
+      return unless the_program
+
       length_buffer = " " * 4
       log_buffer = " " * LOG_SIZE
 
@@ -94,7 +102,7 @@ module Parasol
     end
 
     def cleanup
-      return unless linked?
+      return unless the_program
 
       require_opengl_context!
 

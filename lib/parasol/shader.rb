@@ -43,11 +43,13 @@ module Parasol
 
     def create_shader!
       GL.CreateShader(type).tap do |pointer|
-        fail Parasol::ShaderError, "Unable to create shader." if pointer.zero?
+        fail Parasol::ShaderError, "Unable to create shader" if pointer.zero?
       end
     end
 
     def compile_shader!
+      fail Parasol::ShaderError, "Shader has not been created" unless the_shader
+
       GL.ShaderSource the_shader, 1, packed_source, nil
 
       GL.CompileShader the_shader
@@ -74,6 +76,8 @@ module Parasol
     end
 
     def compile_status
+      return unless the_shader
+
       status_buffer = " " * 4
 
       GL.GetShaderiv the_shader, GL::COMPILE_STATUS, status_buffer
@@ -84,6 +88,8 @@ module Parasol
     end
 
     def last_error_message
+      return unless the_shader
+
       length_buffer = " " * 4
       log_buffer = " " * LOG_SIZE
 
@@ -93,7 +99,7 @@ module Parasol
     end
 
     def cleanup
-      return unless compiled?
+      return unless the_shader
 
       require_opengl_context!
 
