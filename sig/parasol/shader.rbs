@@ -32,7 +32,7 @@ module Parasol
 
     def compile_status: () -> Integer?
 
-    def last_error_message: () -> String
+    def last_error_message: () -> String?
 
     def cleanup: () -> void
   end
