@@ -19,7 +19,9 @@ RSpec.shared_context "with an OpenGL context" do
   end
 
   def initialize_glfw
-    GLFW.load_lib
+    homebrew_path = "/opt/homebrew/lib/libglfw.3.dylib"
+    glfw_library_path = homebrew_path if File.exist? homebrew_path
+    GLFW.load_lib glfw_library_path
     GLFW.Init
 
     GLFW.WindowHint GLFW::GLFW_CONTEXT_VERSION_MAJOR, 3
