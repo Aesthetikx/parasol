@@ -9,7 +9,7 @@ gem "rake", "~> 13"
 
 gem "rspec", "~> 3"
 
-gem "rubocop", "~> 1.21"
+gem "rubocop", "~> 1"
 gem "rubocop-performance"
 gem "rubocop-rake"
 gem "rubocop-rspec"
