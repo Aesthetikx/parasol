@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Parasol
+  # An OpenGL program which links and manages multiple shaders.
   class Program
     include OpenGLContext
 
@@ -55,9 +56,7 @@ module Parasol
         return the_program # : Integer
       end
 
-      message = last_error_message
-
-      fail Parasol::ShaderError, "Unable to compile program:\n#{message}"
+      fail Parasol::ShaderError, "Unable to compile program:\n#{last_error_message}"
     rescue Parasol::ShaderError
       cleanup
 

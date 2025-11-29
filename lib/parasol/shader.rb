@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Parasol
+  # A base class for OpenGL shaders which handles compilation and cleanup.
   class Shader
     include OpenGLContext
 
@@ -56,9 +57,7 @@ module Parasol
         return the_shader # : Integer
       end
 
-      message = last_error_message
-
-      fail Parasol::ShaderError, "Unable to compile shader:\n#{message}"
+      fail Parasol::ShaderError, "Unable to compile shader:\n#{last_error_message}"
     rescue Parasol::ShaderError
       cleanup
 
